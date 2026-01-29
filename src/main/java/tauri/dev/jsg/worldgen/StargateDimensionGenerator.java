@@ -6,6 +6,10 @@ import net.minecraft.world.World;
 import tauri.dev.jsg.JSG;
 import tauri.dev.jsg.config.JSGConfig;
 import tauri.dev.jsg.config.JSGConfigUtil;
+//new
+import tauri.dev.jsg.config.stargate.StargateDimensionConfig;
+import tauri.dev.jsg.config.stargate.StargateDimensionConfigEntry;
+//end
 import tauri.dev.jsg.stargate.network.StargateAddress;
 import tauri.dev.jsg.stargate.network.StargateNetwork;
 import tauri.dev.jsg.stargate.network.StargatePos;
@@ -49,6 +53,21 @@ public class StargateDimensionGenerator {
                 continue;
             }
             if(id == 1) symbolType = SymbolTypeEnum.UNIVERSE;
+            //new code
+            StargateDimensionConfigEntry data = StargateDimensionConfig.getDimensionMap().get(id);
+
+            //if (data != null && data.groups != null) {
+                // Use the dimension’s group(s) to pick MW or Pegasus
+                if (data.groups.contains("milkyway")) {
+                    symbolType = SymbolTypeEnum.MILKYWAY;
+                } else if (data.groups.contains("pegasus")) {
+                    symbolType = SymbolTypeEnum.PEGASUS;
+                } else if (data.groups.contains("universe")){
+                    symbolType = SymbolTypeEnum.UNIVERSE;
+                }
+            //}
+            //if(id == 61) symbolType = SymbolTypeEnum.PEGASUS;
+            //end
             if (id == 0 || id == -1) {
                 JSG.debug("Dim " + id + " is internally blacklisted. Skipping...");
                 continue;
@@ -75,6 +94,7 @@ public class StargateDimensionGenerator {
                     continue;
                 }
             }
+
 
             GeneratedStargate gs = generateAndPutAddresses(sgn, id, symbolType);
             JSG.debug("Found unknown dimension " + id + "! This is it's address:");

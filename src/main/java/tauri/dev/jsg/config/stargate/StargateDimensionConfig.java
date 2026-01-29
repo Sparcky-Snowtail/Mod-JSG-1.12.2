@@ -23,6 +23,11 @@ public class StargateDimensionConfig {
     private static Map<Integer, StargateDimensionConfigEntry> dimensionIntMap;
     private static Map<Integer, StargateDimensionConfigEntry> dimensionMap;
 
+    public static Map<Integer, StargateDimensionConfigEntry> getDimensionMap() {
+        return dimensionMap;
+    }
+
+
     static {
         DEFAULTS_MAP.put("overworld", new StargateDimensionConfigEntry("overworld", 0, new ArrayList<String>() {{
             add("netherOv");
