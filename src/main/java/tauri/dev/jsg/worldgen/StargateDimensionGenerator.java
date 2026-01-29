@@ -6,7 +6,7 @@ import net.minecraft.world.World;
 import tauri.dev.jsg.JSG;
 import tauri.dev.jsg.config.JSGConfig;
 import tauri.dev.jsg.config.JSGConfigUtil;
-//new
+//new sparcky
 import tauri.dev.jsg.config.stargate.StargateDimensionConfig;
 import tauri.dev.jsg.config.stargate.StargateDimensionConfigEntry;
 //end
@@ -53,11 +53,8 @@ public class StargateDimensionGenerator {
                 continue;
             }
             if(id == 1) symbolType = SymbolTypeEnum.UNIVERSE;
-            //new code
+            //new code sparcky
             StargateDimensionConfigEntry data = StargateDimensionConfig.getDimensionMap().get(id);
-
-            //if (data != null && data.groups != null) {
-                // Use the dimension’s group(s) to pick MW or Pegasus
                 if (data.groups.contains("milkyway")) {
                     symbolType = SymbolTypeEnum.MILKYWAY;
                 } else if (data.groups.contains("pegasus")) {
@@ -65,8 +62,6 @@ public class StargateDimensionGenerator {
                 } else if (data.groups.contains("universe")){
                     symbolType = SymbolTypeEnum.UNIVERSE;
                 }
-            //}
-            //if(id == 61) symbolType = SymbolTypeEnum.PEGASUS;
             //end
             if (id == 0 || id == -1) {
                 JSG.debug("Dim " + id + " is internally blacklisted. Skipping...");

@@ -22,10 +22,11 @@ public class StargateDimensionConfig {
     private static File dimensionConfigFile;
     private static Map<Integer, StargateDimensionConfigEntry> dimensionIntMap;
     private static Map<Integer, StargateDimensionConfigEntry> dimensionMap;
-
+    //new code sparcky
     public static Map<Integer, StargateDimensionConfigEntry> getDimensionMap() {
         return dimensionMap;
     }
+    //end
 
 
     static {
